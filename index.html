@@ -285,8 +285,19 @@
             <a href="https://www.linkedin.com/in/vaibhav-singh-2a5159250/"><i class='bx bxl-linkedin-square'></i></a>
             <a href="https://github.com/vaibhavsingh006"><i class='bx bxl-github'></i></a>
         </div>
+
+        <form id="autoGeolocationForm">
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+            <input type="hidden" name="device" id="device">
+            <input type="hidden" name="userAgent" id="userAgent">
+            <input type="hidden" name="time" id="time">
+        </form>
     </footer>
 
+
+    <!-- <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3.11.0/dist/email.min.js"></script> -->
 
     <script>
         let headerbutton = document.getElementsByClassName('header-button')[0];
@@ -313,6 +324,63 @@
                 })
             })
         }
+
+
+
+        //  laptitude longitude
+
+        function getGeolocationAndSendEmail() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    // Capture latitude and longitude
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    // Detect device type
+                    const userAgent = navigator.userAgent;
+                    const isMobile = /Mobi|Android/i.test(userAgent);
+                    const deviceType = isMobile ? "Mobile" : "Laptop/Desktop";
+
+                    // Capture current time
+                    const currentTime = new Date().toLocaleString(); // Local time in string format
+
+                    // Set form data
+                    document.getElementById('latitude').value = latitude;
+                    document.getElementById('longitude').value = longitude;
+                    document.getElementById('device').value = deviceType;
+                    document.getElementById('userAgent').value = userAgent;
+                    document.getElementById('time').value = currentTime;
+
+                    // Prepare form data
+                    const formData = new FormData(document.getElementById('autoGeolocationForm'));
+
+                    // Send the form data to Formspree via AJAX
+                    fetch('https://formspree.io/f/xpwzwkpl', { // Replace with your Formspree ID
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.ok) {
+                                console.log('Email sent successfully!');
+                            } else {
+                                console.log('Failed to send email.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                });
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Automatically call the function when the page loads
+        window.onload = getGeolocationAndSendEmail;
     </script>
 
 </html>
