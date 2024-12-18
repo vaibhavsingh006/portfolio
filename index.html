@@ -10,6 +10,110 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
+<style>
+    .profile {
+        /* width: 300px !important; */
+        /* Adjust the size as needed */
+        /* height: 300px !important; */
+        /* Adjust the size as needed */
+        transition: transform 0.1s ease-out !important;
+        /* Add smooth transition */
+        transform-style: preserve-3d !important;
+        transform: perspective(200px);
+        cursor: pointer;
+        object-fit: cover;
+        /* Change the cursor to a pointer to indicate interactivity */
+    }
+
+
+    /* contact form  */
+
+    #form {
+        padding: 5vw 10vw 5vw 10vw;
+    }
+
+    .contact-container {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    h2 span {
+        color: rgb(20, 126, 251);
+    }
+
+    .input-box {
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        background: #f3f6fc;
+    }
+
+    .input-box i {
+        color: #555;
+        margin-right: 10px;
+        font-size: 18px;
+        margin-top: 3px;
+    }
+
+    .input-box input,
+    .input-box textarea {
+        border: none;
+        outline: none;
+        width: 100%;
+        background: transparent;
+        font-size: 16px;
+        resize: none;
+    }
+
+    button {
+        background-color: rgb(20, 126, 251);
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        width: fit-content;
+    }
+
+
+    button i {
+        font-size: 16px;
+    }
+
+    .image-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    img {
+        width: 80%;
+        height: auto;
+    }
+</style>
 
 <body>
     <section id="first">
@@ -30,16 +134,17 @@
                         <a href="#education" id="">Education</a>
                     </li>
                     <li class="links-list-items">
-                        <a href="#contact" id="">Contact</a>
+                        <a href="#form" id="">Contact</a>
                     </li>
                 </ul>
                 <ul class="menu-ul">
-                    <div><a href="https://github.com/vaibhavsingh006" class="apple fn"><i class='bx bxl-github'></i></a>
+                    <div><a href="https://github.com/vaibhavsingh006" target="_blank" class="apple fn"><i
+                                class='bx bxl-github'></i></a>
                     </div>
-                    <div><a href="https://www.linkedin.com/in/vaibhav-singh-2a5159250/" class="apple fn"><i
-                                class='bx bxl-linkedin-square'></i></a></div>
+                    <div><a href="https://www.linkedin.com/in/vaibhav-singh-2a5159250/" target="_blank"
+                            class="apple fn"><i class='bx bxl-linkedin-square'></i></a></div>
                     <div><a href="https://api.whatsapp.com/send?phone=7991652863&text=Feel%20Free%20to%20Contact%20Us"
-                            class="apple fn"><i class='bx bxl-whatsapp'></i></a></div>
+                            target="_blank" class="apple fn"><i class='bx bxl-whatsapp'></i></a></div>
                 </ul>
             </nav>
 
@@ -54,14 +159,15 @@
                 <h1>Front-End React <br>Developer <img src="./1688642496612.png" alt="hand" class="hand"></h1>
                 <p>Hi, I'm Vaibhav Singh. A passionate Front-end Web <br> Developer based in uttar pradesh, Unnao. </p>
                 <!-- <div class="icons"> -->
-                <a href="https://www.linkedin.com/in/vaibhav-singh-2a5159250/" class="apple fn"><i
+                <a href="https://www.linkedin.com/in/vaibhav-singh-2a5159250/" target="_blank" class="apple fn"><i
                         class='bx bxl-linkedin-square' style="font-size: 35px;"></i></a>
-                <a href="https://github.com/vaibhavsingh006" class="apple fn"><i class='bx bxl-github'
+                <a href="https://github.com/vaibhavsingh006" target="_blank" class="apple fn"><i class='bx bxl-github'
                         style="font-size: 35px;"></i></a>
                 <!-- </div> -->
             </div>
             <div class="front-side-right">
-                <img src="./my (2).jpg" alt="me">
+                <!-- <img src="./my (2).jpg" alt="me" id="profile"> -->
+                <img src="./ppppp.png" alt="me" class="profile">
             </div>
 
             <!-- <div class="skill">
@@ -79,25 +185,24 @@
     </section>
 
     <section id="second">
-        <div class="about-details front-side" id="abouts">
+        <div class="about-details front-side " id="abouts">
             <div class="about-left-side">
-                <img src="./about-img.webp" alt="background">
+                <img src="./about-img.webp" class="profile" alt="background">
             </div>
             <div class="about-right-side">
                 <h2>ABOUT</h2>
 
-                <p>Welcome to my vibrant portfolio, where creativity and innovation meet flawless frontend
-                    development!
-                    As a passionate frontend developer, I specialize in crafting visually stunning and interactive web
-                    experiences that captivate users from the moment they land on a page .
-                    <!-- <br> -->
-                    As a Junior Front-End Developer, I possess an impressive arsenal of skills in HTML, CSS, JavaScript,
-                    and SCSS . I excel in designing and maintaining responsive websites that offer a smooth user
-                    experience .
+                <p>Welcome to my portfolio, where creativity meets expertise in web development! With over two years of
+                    experience as a frontend developer at GrowupNext, I specialize in creating responsive, visually
+                    engaging, and user-friendly web applications using HTML, CSS, JavaScript, React.js, and Tailwind
+                    CSS.
+                    <br>
+                    I am currently learning the MERN stack to expand my backend development skills and have successfully
+                    delivered a full-stack e-commerce application. Through both professional and personal projects, I
+                    strive to deliver innovative solutions that blend functionality with exceptional design.
                     <br>
                     <br>
-                    Thank you for visiting, and I can't wait to embark on an exciting journey of collaboration and
-                    innovation with you!
+                    Thank you for visiting, and I look forward to collaborating with you on exciting digital projects!
                 </p>
             </div>
         </div>
@@ -109,7 +214,7 @@
 
         <div class="project" style="padding-top: 50px;">
             <div class="project-web">
-                <a class="web-img crypto" href="#">
+                <a class="web-img crypto" href="https://crypto-search-coin.netlify.app/" target="_blank">
                     <img src="./crypto-project.png" alt="web-demo">
                 </a>
                 <div class="web-details">
@@ -123,10 +228,10 @@
                     </div> -->
 
                     <div class="web-links">
-                        <a href="https://github.com/vaibhavsingh006/crypto_App" class="apple">Code <i
+                        <a href="https://github.com/vaibhavsingh006/crypto_App" target="_blank" class="apple">Code <i
                                 class='bx bxl-github'></i></a>
-                        <a href="https://crypto-search-coin.netlify.app/" class="apple liveadd">Live Demo <i
-                                class='bx bx-link-external '></i></a>
+                        <a href="https://crypto-search-coin.netlify.app/" target="_blank" class="apple liveadd">Live
+                            Demo <i class='bx bx-link-external '></i></a>
                     </div>
                 </div>
             </div>
@@ -135,7 +240,7 @@
 
         <div class="project even">
             <div class="project-web">
-                <a class="web-img netflix" href="#">
+                <a class="web-img netflix" href="https://resilient-taffy-1f1782.netlify.app/" target="_blank">
                     <img src="./ntflix.png" alt="web-demo">
                 </a>
                 <div class="web-details">
@@ -149,10 +254,10 @@
                     </div> -->
 
                     <div class="web-links">
-                        <a href="https://github.com/vaibhavsingh006/NetFlixgPt" class="apple">Code <i
+                        <a href="https://github.com/vaibhavsingh006/NetFlixgPt" target="_blank" class="apple">Code <i
                                 class='bx bxl-github'></i></a>
-                        <a href="https://resilient-taffy-1f1782.netlify.app/" class="apple liveadd">Live Demo <i
-                                class='bx bx-link-external '></i></a>
+                        <a href="https://resilient-taffy-1f1782.netlify.app/" target="_blank" class="apple liveadd">Live
+                            Demo <i class='bx bx-link-external '></i></a>
                     </div>
                 </div>
             </div>
@@ -161,7 +266,7 @@
 
         <div class="project">
             <div class="project-web">
-                <a class="web-img spotify" href="https://bd-go.000webhostapp.com/">
+                <a class="web-img spotify" href="https://bd-go.000webhostapp.com/" target="_blank">
                     <img src="./medidev.png" alt="web-demo">
                 </a>
                 <div class="web-details">
@@ -177,7 +282,7 @@
 
                     <div class="web-links">
                         <a href="#" class="apple">Not public <i class='bx bxl-github'></i></a>
-                        <a href="https://bd-go.000webhostapp.com/" class="apple liveadd">Live Demo <i
+                        <a href="https://bd-go.000webhostapp.com/" target="_blank" class="apple liveadd">Live Demo <i
                                 class='bx bx-link-external '></i></a>
                     </div>
                 </div>
@@ -186,7 +291,7 @@
 
         <div class="project even">
             <div class="project-web">
-                <a class="web-img growupnext" href="https://humped-skies.000webhostapp.com/">
+                <a class="web-img growupnext" href="https://humped-skies.000webhostapp.com/" target="_blank">
                     <img src="./growupnext.jpeg" alt="web-demo" style="">
                 </a>
                 <div class="web-details">
@@ -202,7 +307,8 @@
 
                     <div class="web-links">
                         <a href="#" class="apple">Not public <i class='bx bxl-github'></i></a>
-                        <a href="https://humped-skies.000webhostapp.com/" id="education" class="apple liveadd">Live Demo
+                        <a href="https://humped-skies.000webhostapp.com/" target="_blank" id="education"
+                            class="apple liveadd">Live Demo
                             <i class='bx bx-link-external '></i></a>
                     </div>
                 </div>
@@ -224,19 +330,19 @@
             <div class="w3-row-padding" style="margin:0 16px">
                 <div class="w3-half animaclass">
                     <div class="ug" style="padding-top: 25px;">
-                        <p class="w3-text-grey" style="    margin: 5px 0;">2024</p>
+                        <p class="w3-text-grey" style="    margin: 5px 0;">2024 - Ongoing</p>
                         <b style="color:#413e3e;">Master of computer application</b>
                         <p class="w3-text-grey" style="    margin: 5px 0;">SRM University</p>
                     </div>
 
                     <div class="ug" style="padding-top: 25px;">
-                        <p class="w3-text-grey" style="    margin: 5px 0;">2020-2023</p>
+                        <p class="w3-text-grey" style="    margin: 5px 0;">2020 - 2023</p>
                         <b style="color:#413e3e;">Bachelor of Art</b>
-                        <p class="w3-text-grey" style="    margin: 5px 0;">C.S.J.M , Kanpur University</p>
+                        <p class="w3-text-grey" style="    margin: 5px 0;">Chhatrapati Shahu Ji Maharaj University</p>
                     </div>
 
                     <div class="intermediate animaclass" style="padding-top: 25px;">
-                        <p class="w3-text-grey" style="    margin: 5px 0;">2019-2020</p>
+                        <p class="w3-text-grey" style="    margin: 5px 0;">2019 - 2020</p>
                         <b style="color:#413e3e;">Intermediate</b>
                         <p class="w3-text-grey" style="    margin: 5px 0;">S.V.M.I.C , UP BOARD</p>
                     </div>
@@ -257,6 +363,39 @@
         </div>
     </section>
 
+    <section id="form">
+        <div class="contact-container">
+            <!-- Image Section -->
+            <div class="image-container">
+                <img src="./contact.jpg" alt="Illustration">
+            </div>
+
+            <!-- Form Section -->
+            <div class="form-container">
+                <h2>Get In <span>Touch</span></h2>
+                <div class="input-box">
+                    <i class='bx bx-user'></i>
+                    <input type="text" placeholder="Name">
+                </div>
+                <div class="input-box">
+                    <i class='bx bx-envelope'></i>
+                    <input type="email" placeholder="Email">
+                </div>
+                <div class="input-box">
+                    <i class='bx bx-phone'></i>
+                    <input type="tel" placeholder="Phone">
+                </div>
+                <div class="input-box">
+                    <i class='bx bx-message'></i>
+                    <textarea rows="4" placeholder="Message"></textarea>
+                </div>
+                <button type="submit">
+                    Submit <i class='bx bx-send'></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <section id="fourth">
         <p id="contact">Contact</p>
         <h2>Don't be shy! Hit me up! 👇</h2>
@@ -266,14 +405,17 @@
                 <i class='bx bx-current-location'></i>
                 <div class="location-detail">
                     <p>Location</p>
-                    <a href="https://maps.app.goo.gl/8oy9itDr4u2EUHkZ6">UttarPradesh, Unnao</a>
+                    <a href="https://maps.app.goo.gl/8oy9itDr4u2EUHkZ6" target="_blank">UttarPradesh, Unnao</a>
                 </div>
             </div>
             <div class="gmail location">
                 <i class='bx bx-envelope'></i>
                 <div class="location-detail">
                     <p>Mail</p>
-                    <a href="#">vaibhav.anmol.chandel@gmail.com</a>
+                    <a
+                        href="mailto:vaibhav.anmol.chandel@gmail.com?subject=Portfolio%20Inquiry&body=Hi%20vaibhav,%0AI%20am%20interested%20in%20collaborating%20with%20you!">vaibhav.anmol.chandel@gmail.com</a>
+                    <!-- %20 = for space -->
+                    <!-- ,%0A = for next line in mail -->
                 </div>
             </div>
         </div>
@@ -326,6 +468,35 @@
         }
 
 
+        // gpt---------------------
+        // const image = document.getElementById('profile');
+        const images = document.querySelectorAll('.profile');
+
+        images.forEach(image => {
+            image.addEventListener('mousemove', function (e) {
+                const rect = image.getBoundingClientRect();
+                const x = e.clientX - rect.left; // Get X position relative to the image
+                const y = e.clientY - rect.top;  // Get Y position relative to the image
+                const centerX = rect.width / 2;  // Center of the image (X)
+                const centerY = rect.height / 2; // Center of the image (Y)
+
+                // Calculate the X and Y movement values for the 3D effect
+                const deltaX = (x - centerX) / centerX;
+                const deltaY = (y - centerY) / centerY;
+
+                // Apply the 3D effect using CSS transforms
+                image.style.transform = `perspective(500px) rotateX(${deltaY * 5}deg) rotateY(${deltaX * 5}deg) scale(1)`;
+                image.style.boxShadow = `${-deltaX * 20}px ${deltaY * 20}px 30px rgba(0, 0, 0, 0.1)`;
+            });
+
+            image.addEventListener('mouseleave', function () {
+                // Reset the image transform when the cursor leaves
+                image.style.transform = 'perspective(500px) rotateX(0deg) rotateY(0deg) scale(1)';
+                image.style.boxShadow = 'none'
+            });
+        });
+
+        // gpt0-----------------------------
 
         //  laptitude longitude
 
