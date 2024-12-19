@@ -1,10 +1,10 @@
 // disable every thing 
 
 // Disable Right-Click
-// document.addEventListener('contextmenu', function (e) {
-//     e.preventDefault();
-//     alert('Right-click is disabled on this website.');
-// });
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    alert('Right-click is disabled on this website.');
+});
 
 // Disable Keyboard Shortcuts
 document.addEventListener('keydown', function (e) {
