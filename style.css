@@ -183,7 +183,7 @@ section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     /* padding: 140px 10vw 10vw 10vw; */
-    padding: 10vw 10vw 10vw 10vw;
+    padding: 5vw 10vw 5vw 10vw;
     gap: 40px;
 }
 
@@ -490,6 +490,16 @@ section {
 
 /* end mobile header */
 @media screen and (max-width: 700px) {
+
+    .education-card {
+        flex-direction: column;
+
+    }
+
+    .education-card img {
+        width: 100% !important;
+    }
+
     .contact-container {
         flex-direction: column-reverse;
     }
@@ -648,6 +658,10 @@ section {
         height: 140vh;
     } */
 
+    .image-container {
+        display: none !important;
+    }
+
     .project {
         padding: 40px 0px 20px;
     }
@@ -765,7 +779,7 @@ height: 100vh;
 h2 {
     margin-bottom: 20px;
     color: #333;
-    font-size: 24px;
+    font-size: 30px;
 }
 
 .input-field {
