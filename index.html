@@ -25,8 +25,47 @@
         /* Change the cursor to a pointer to indicate interactivity */
     }
 
+    /* contact form  */
+
+    .input-box small {
+        color: red;
+        display: none;
+        margin-top: 5px;
+    }
+
+    .input-box.error small {
+        display: block;
+        position: absolute;
+        bottom: -16px;
+    }
+
+    .success,
+    .error {
+        margin-bottom: 15px;
+        font-size: 14px;
+        padding: 10px;
+        display: none;
+    }
+
+    .success {
+        margin-bottom: 0px;
+    }
+
+    .success {
+        color: green;
+        background-color: #e6f9e6;
+    }
+
+    .error {
+        color: red;
+        background-color: #f9e6e6;
+    }
 
     /* contact form  */
+
+    #contact-form {
+        width: 50%;
+    }
 
     #form {
         padding: 5vw 10vw 5vw 10vw;
@@ -64,6 +103,7 @@
         border-radius: 8px;
         padding: 10px;
         background: #f3f6fc;
+        position: relative;
     }
 
     .input-box i {
@@ -83,7 +123,7 @@
         resize: none;
     }
 
-    button {
+    .form-container>button {
         background-color: rgb(20, 126, 251);
         color: #fff;
         padding: 10px 20px;
@@ -371,28 +411,36 @@
             </div>
 
             <!-- Form Section -->
-            <div class="form-container">
-                <h2>Get In <span>Touch</span></h2>
-                <div class="input-box">
-                    <i class='bx bx-user'></i>
-                    <input type="text" placeholder="Name">
+            <form id="contact-form" action="https://formspree.io/f/xwpkgkqk" method="POST">
+                <div class="form-container">
+                    <h2>Get In <span>Touch</span></h2>
+                    <div class="input-box">
+                        <i class='bx bx-user'></i>
+                        <input type="text" name="name" placeholder="Name" required>
+                        <small>Name must be at least 3 characters long.</small>
+                    </div>
+                    <div class="input-box">
+                        <i class='bx bx-envelope'></i>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <small>Enter a valid email address.</small>
+                    </div>
+                    <div class="input-box">
+                        <i class='bx bx-phone'></i>
+                        <input type="tel" name="phone" placeholder="Phone" pattern="[0-9]{10}">
+                        <small>Phone number must be 10 digits.</small>
+                    </div>
+                    <div class="input-box">
+                        <i class='bx bx-message'></i>
+                        <textarea name="message" rows="4" placeholder="Message" required></textarea>
+                        <small>Message must be at least 10 characters long.</small>
+                    </div>
+                    <button type="submit">
+                        Submit <i class='bx bx-send'></i>
+                    </button>
+                    <div class="success">Thank you! Your message has been sent.</div>
+                    <div class="error">An error occurred. Please try again.</div>
                 </div>
-                <div class="input-box">
-                    <i class='bx bx-envelope'></i>
-                    <input type="email" placeholder="Email">
-                </div>
-                <div class="input-box">
-                    <i class='bx bx-phone'></i>
-                    <input type="tel" placeholder="Phone">
-                </div>
-                <div class="input-box">
-                    <i class='bx bx-message'></i>
-                    <textarea rows="4" placeholder="Message"></textarea>
-                </div>
-                <button type="submit">
-                    Submit <i class='bx bx-send'></i>
-                </button>
-            </div>
+            </form>
         </div>
     </section>
 
@@ -552,6 +600,102 @@
 
         // Automatically call the function when the page loads
         window.onload = getGeolocationAndSendEmail;
+
+
+        // form here
+        const form = document.getElementById('contact-form');
+        const inputs = form.querySelectorAll('input, textarea');
+        const successMessage = document.querySelector('.success');
+        const errorMessage = document.querySelector('.error');
+
+        // Real-time validation
+        inputs.forEach(input => {
+            input.addEventListener('input', () => validateInput(input));
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            let isValid = true;
+            inputs.forEach(input => {
+                if (!validateInput(input)) {
+                    isValid = false;
+                }
+            });
+
+            if (!isValid) {
+                return;
+            }
+
+            const formData = new FormData(form);
+            const email = formData.get('email');
+
+            // Prevent multiple submissions from the same email
+            const previousSubmission = localStorage.getItem(email);
+            if (previousSubmission) {
+                errorMessage.textContent = "You can only send one message per email.";
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            try {
+                // Submit the form to Formspree
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    headers: { 'Accept': 'application/json' },
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    // Store the email in localStorage
+                    localStorage.setItem(email, true);
+
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    form.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                errorMessage.textContent = "An error occurred. Please try again.";
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+            }
+        });
+
+        // Validate individual inputs
+        function validateInput(input) {
+            const inputBox = input.parentElement;
+            const small = inputBox.querySelector('small');
+            let isValid = true;
+
+            if (input.name === 'name' && input.value.trim().length < 3) {
+                isValid = false;
+                small.textContent = "Name must be at least 3 characters long.";
+            } else if (input.name === 'email' && !/^[^@]+@[^@]+\.[a-z]{2,}$/.test(input.value)) {
+                isValid = false;
+                small.textContent = "Enter a valid email address.";
+            } else if (input.name === 'phone' && !/^\d{10}$/.test(input.value)) {
+                isValid = false;
+                small.textContent = "Phone number must be 10 digits.";
+            } else if (input.name === 'message' && input.value.trim().length < 10) {
+                isValid = false;
+                small.textContent = "Message must be at least 10 characters long.";
+            }
+
+            if (isValid) {
+                inputBox.classList.remove('error');
+                inputBox.classList.add('success');
+                small.style.display = 'none';
+            } else {
+                inputBox.classList.add('error');
+                inputBox.classList.remove('success');
+                small.style.display = 'block';
+            }
+
+            return isValid;
+        }
+        // form here
     </script>
 
 </html>

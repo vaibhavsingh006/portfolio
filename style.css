@@ -422,28 +422,29 @@ section {
 /* mobile header */
 
 
-.header .header-button {
-    position: fixed;
+.header>.header-button {
+    position: relative;
     background: none;
-    width: 27px;
-    height: 18px;
+    width: 30px;
+    height: 21px;
     border: 0;
     outline: 0;
     cursor: pointer;
     z-index: 99;
     display: none;
-    right: 8%;
+    right: 1%;
 }
 
-.header .line {
+.header>.header-button>.line {
     height: 2px;
     width: 100%;
     background: black;
-    /* position: relative; */
+    position: absolute;
+    left: 0;
 }
 
 
-.header .header-button::after {
+.header>.header-button::after {
     content: '';
     position: absolute;
     height: 2px;
@@ -470,8 +471,8 @@ section {
 }
 
 .active-button {
-    position: fixed !important;
-    right: 8% !important;
+    position: relative !important;
+    right: 1% !important;
 }
 
 .active-button .line {
@@ -479,11 +480,11 @@ section {
 }
 
 .active-button::after {
-    transform: rotate(45deg) translate(-6px, -5px);
+    transform: rotate(45deg) translate(-6px, -6px);
 }
 
 .active-button::before {
-    transform: rotate(-45deg) translate(-6px, 5px);
+    transform: rotate(-45deg) translate(-7px, 7px);
 }
 
 
@@ -493,13 +494,17 @@ section {
         flex-direction: column-reverse;
     }
 
-    .form-container {
-        width: 100%;
+    .contact-container>form {
+        width: 100% !important;
     }
 
     .image-container>img {
         width: 100%;
         height: auto;
+    }
+
+    #form {
+        padding: 5vw;
     }
 }
 
@@ -519,7 +524,7 @@ section {
     }
 
     #third {
-        padding: 140px 5vw 10vw 5vw;
+        padding: 90px 5vw 10vw 5vw;
     }
 
     .web-img {
